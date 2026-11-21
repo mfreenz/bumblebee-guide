@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arizona RP Bumble Bee (#27) — Все работы и гайд новичка</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #060913;
+      background-image:
+        radial-gradient(circle at 10% 8%, rgba(250, 204, 21, 0.22), transparent 35%),
+        radial-gradient(circle at 90% 15%, rgba(56, 189, 248, 0.2), transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(244, 114, 182, 0.16), transparent 42%),
+        radial-gradient(circle at 15% 88%, rgba(34, 197, 94, 0.15), transparent 45%);
+      color: #f8fafc;
+      line-height: 1.5;
+      padding: 24px 16px 90px;
+      min-height: 100vh;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; }
+
+    @media (min-width: 1200px) {
+      body::before, body::after {
+        content: ""; position: fixed; top: 0; bottom: 0; width: 4px;
+        background: linear-gradient(180deg, #facc15, #fb923c, #38bdf8, #f472b6);
+        box-shadow: 0 0 25px rgba(250, 204, 21, 0.5); z-index: 10;
+      }
+      body::before { left: 0; }
+      body::after { right: 0; }
+      .side-col {
+        position: fixed; top: 8%; bottom: 12%; width: 115px;
+        display: flex; flex-direction: column; justify-content: space-between;
+        align-items: center; pointer-events: none; user-select: none; z-index: 5;
+      }
+      .col-left { left: 16px; }
+      .col-right { right: 16px; }
+      .side-emoji { font-size: 26px; display: inline-block; animation: floatItem 5s ease-in-out infinite; }
+      .side-pill {
+        background: rgba(17, 24, 39, 0.88); border: 1px solid rgba(250, 204, 21, 0.5);
+        color: #facc15; font-family: monospace; font-size: 11px; font-weight: 800;
+        padding: 6px 10px; border-radius: 10px; box-shadow: 0 0 16px rgba(250, 204, 21, 0.25);
+        animation: floatItem 5.5s ease-in-out infinite; text-align: center; width: 100%;
+      }
+      .side-pill.cyan { border-color: rgba(56, 189, 248, 0.55); color: #38bdf8; box-shadow: 0 0 16px rgba(56, 189, 248, 0.25); }
+      .side-col > *:nth-child(1) { animation-delay: 0s; }
+      .side-col > *:nth-child(2) { animation-delay: 0.9s; }
+      .side-col > *:nth-child(3) { animation-delay: 1.8s; }
+      .side-col > *:nth-child(4) { animation-delay: 2.7s; }
+      .side-col > *:nth-child(5) { animation-delay: 3.6s; }
+      .side-col > *:nth-child(6) { animation-delay: 4.5s; }
+    }
+    @media (max-width: 1199px) { .side-col { display: none; } }
+    @keyframes floatItem {
+      0%, 100% { opacity: 0.25; transform: translateY(8px) scale(0.95); }
+      50% { opacity: 0.95; transform: translateY(-8px) scale(1.05); }
+    }
+
+    .hero {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.18), rgba(249, 115, 22, 0.15), rgba(56, 189, 248, 0.16));
+      border: 2px solid #facc15; border-radius: 24px; padding: 36px 20px; margin-bottom: 32px;
+      box-shadow: 0 0 45px rgba(250, 204, 21, 0.2);
+    }
+    .badge {
+      display: inline-block; background: linear-gradient(90deg, #facc15, #fb923c);
+      color: #060913; font-weight: 900; font-size: 12px; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px;
+    }
+    h1 { font-size: 32px; margin-bottom: 10px; color: #fff; }
+    h1 span { background: linear-gradient(90deg, #fde047, #fb923c, #f472b6, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .desc { color: #cbd5e1; font-size: 15px; max-width: 620px; margin: 0 auto 22px; }
+    .ip-box {
+      display: inline-flex; align-items: center; gap: 12px; background: #070b14;
+      border: 1.5px solid #38bdf8; padding: 9px 18px; border-radius: 14px;
+      font-family: monospace; font-size: 16px; color: #38bdf8; box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    }
+    .ip-box button { background: linear-gradient(135deg, #38bdf8, #0284c7); color: #fff; border: none; padding: 7px 15px; border-radius: 9px; font-weight: bold; cursor: pointer; }
+    h2 { font-size: 22px; margin: 34px 0 16px; background: linear-gradient(90deg, #fde047, #fb923c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .grid, .jobs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 14px; }
+    .card { background: rgba(17, 24, 39, 0.88); border: 1px solid rgba(250, 204, 21, 0.28); border-radius: 16px; padding: 18px; cursor: pointer; transition: 0.2s; }
+    .card:hover { border-color: #facc15; transform: translateY(-3px); }
+    .card.done { border-color: #22c55e; background: rgba(34, 197, 94, 0.16); }
+    .step-num { display: inline-block; background: linear-gradient(90deg, #facc15, #f97316); color: #060913; font-size: 11px; font-weight: 900; padding: 3px 9px; border-radius: 6px; margin-bottom: 8px; }
+    .card.done .step-num { background: #22c55e; color: #052e16; }
+    .card h3 { font-size: 16px; margin-bottom: 6px; color: #fff; }
+    .card p, .job-card p { font-size: 13px; color: #94a3b8; }
+
+    .job-card { background: linear-gradient(160deg, rgba(23, 32, 53, 0.92), rgba(11, 16, 29, 0.96)); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 16px; padding: 18px; transition: 0.2s; }
+    .job-card:hover { border-color: #38bdf8; transform: translateY(-3px); }
+    .job-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .lvl-badge { font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 6px; }
+    .lvl-low { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.4); }
+    .lvl-mid { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+    .lvl-top { background: rgba(250, 204, 21, 0.2); color: #facc15; border: 1px solid rgba(250, 204, 21, 0.4); }
+    .pay-tag { font-family: monospace; font-size: 12px; color: #f472b6; font-weight: bold; }
+    .job-card h4 { font-size: 17px; color: #fff; margin-bottom: 6px; }
+
+    .calc { background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(244, 114, 182, 0.1), rgba(17, 24, 39, 0.95)); border: 1.5px solid #38bdf8; border-radius: 18px; padding: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; align-items: center; }
+    select, input[type="range"] { width: 100%; margin-top: 6px; margin-bottom: 12px; padding: 10px; border-radius: 10px; background: #070b14; color: #fff; border: 1px solid #38bdf8; font-size: 14px; }
+    .res-box { background: #070b14; border: 2px solid #facc15; border-radius: 14px; padding: 20px; text-align: center; }
+    .money { font-size: 28px; font-weight: 900; color: #22c55e; font-family: monospace; margin-top: 6px; }
+
+    .cmds { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .cmd { background: rgba(17, 24, 39, 0.9); border: 1px solid rgba(244, 114, 182, 0.35); padding: 14px; border-radius: 12px; cursor: pointer; }
+    .cmd:hover { border-color: #f472b6; }
+    .cmd b { color: #f472b6; font-family: monospace; font-size: 16px; display: block; margin-bottom: 3px; }
+    .cmd span { color: #94a3b8; font-size: 12.5px; }
+
+    .msg { position: fixed; bottom: 85px; right: 20px; background: #22c55e; color: #052e16; font-weight: 900; padding: 11px 20px; border-radius: 12px; display: none; z-index: 9999; box-shadow: 0 8px 25px rgba(0,0,0,0.6); }
+    .up-btn { position: fixed; bottom: 20px; left: 20px; background: #111827; color: #facc15; border: 1px solid #facc15; padding: 10px 15px; border-radius: 12px; font-weight: bold; font-size: 13px; cursor: pointer; z-index: 999; }
+    .up-btn:hover { background: #facc15; color: #060913; }
+
+    .nav-widget { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .bottom-btns { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-menu { display: none; flex-direction: column; gap: 5px; background: #111827; border: 1.5px solid #facc15; border-radius: 14px; padding: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); min-width: 210px; }
+    .nav-menu.open { display: flex; }
+    .nav-item { background: transparent; border: 2px solid transparent; color: #f8fafc; text-align: left; padding: 8px 12px; border-radius: 9px; font-size: 13.5px; font-weight: 700; cursor: pointer; }
+    .nav-item:hover { background: rgba(250, 204, 21, 0.12); color: #facc15; }
+    .nav-item.active { border-color: #facc15; background: rgba(250, 204, 21, 0.22); color: #facc15; box-shadow: 0 0 12px rgba(250, 204, 21, 0.4); }
+    .contact-btn { background: linear-gradient(135deg, #38bdf8, #0284c7); color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 12px; font-weight: 800; font-size: 13px; }
+    .nav-toggle { background: linear-gradient(135deg, #facc15, #f97316); color: #060913; border: none; padding: 10px 15px; border-radius: 12px; font-weight: 900; font-size: 13px; cursor: pointer; }
+    .sec-glow { outline: 3px solid #facc15; outline-offset: 6px; box-shadow: 0 0 30px rgba(250, 204, 21, 0.5); border-radius: 16px; }
+    footer { text-align: center; color: #64748b; font-size: 12px; margin-top: 42px; }
+  </style>
+</head>
+<body>
+  <div class="side-col col-left">
+    <span class="side-emoji">🐝</span>
+    <div class="side-pill">⚡ SERVER #27</div>
+    <span class="side-emoji">⛏</span>
+    <div class="side-pill cyan">🐝 BUMBLE BEE</div>
+    <span class="side-emoji">🚗</span>
+    <span class="side-emoji">💎</span>
+  </div>
+
+  <div class="side-col col-right">
+    <span class="side-emoji">🏆</span>
+    <div class="side-pill cyan">💎 SAMP / TRILOGY</div>
+    <span class="side-emoji">💰</span>
+    <div class="side-pill">🔥 FAST START</div>
+    <span class="side-emoji">✈️</span>
+    <span class="side-emoji">👑</span>
+  </div>
+
+  <div class="wrap">
+    <div style="text-align: center; margin-bottom: 12px;">
+      <span style="display: inline-block; background: rgba(250, 204, 21, 0.14); border: 1px solid rgba(250, 204, 21, 0.45); color: #facc15; font-size: 12px; font-weight: 800; letter-spacing: 0.8px; padding: 5px 16px; border-radius: 999px; text-transform: uppercase;">
+        ⚡ Неофициальный гайд по старту • Arizona Bumble Bee
+      </span>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; margin-bottom: 14px;">
+      <div style="background: #111827; border: 1px solid #facc15; padding: 4px; border-radius: 10px; display: inline-flex; gap: 4px;">
+        <button id="lang-ru" onclick="switchLang('ru')" style="background: #facc15; color: #060913; border: none; padding: 6px 14px; border-radius: 7px; font-weight: 900; cursor: pointer;">RU</button>
+        <button id="lang-en" onclick="switchLang('en')" style="background: transparent; color: #cbd5e1; border: none; padding: 6px 14px; border-radius: 7px; font-weight: 900; cursor: pointer;">EN</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="badge">🐝 ARIZONA ROLE PLAY • СЕРВЕР №27</div>
+      <h1>Полный гид по <span>Bumble Bee</span></h1>
+      <p class="desc">Отмечай шаги старта, выбирай лучшую работу под свой уровень, считай заработок за день и копируй команды в один клик.</p>
+      <div class="ip-box">
+        <span>80.66.82.87:7777</span>
+        <button onclick="copyTxt('80.66.82.87:7777')">Копировать IP</button>
+      </div>
+      <div style="margin-top: 14px;">
+        <a href="https://arizona-rp.com" target="_blank" rel="noopener" style="display: inline-block; background: linear-gradient(135deg, #facc15, #f97316); color: #060913; text-decoration: none; font-weight: 900; padding: 11px 22px; border-radius: 12px; font-size: 14px; box-shadow: 0 6px 20px rgba(250, 204, 21, 0.35);">
+          🚀 Официальный сайт Arizona RP
+        </a>
+      </div>
+    </div>
+
+    <h2>✅ Пошаговый старт (нажми на карточку, чтобы отметить)</h2>
+    <div class="grid">
+      <div class="card" onclick="this.classList.toggle('done')">
+        <span class="step-num">ШАГ 1</span>
+        <h3>Официальный лаунчер</h3>
+        <p>Скачай лаунчер Arizona Games (ПК или телефон) — каждый час игры дают бесплатные рулетки и талоны.</p>
+      </div>
+      <div class="card" onclick="this.classList.toggle('done')">
+        <span class="step-num">ШАГ 2</span>
+        <h3>Начальные квесты</h3>
+        <p>Выполни квесты стартовых NPC — дадут первые деньги, опыт, временную машину и бесплатный VIP.</p>
+      </div>
+      <div class="card" onclick="this.classList.toggle('done')">
+        <span class="step-num">ШАГ 3</span>
+        <h3>Паспорт и защита</h3>
+        <p>Получи паспорт в Мэрии, права в автошколе и привяжи почту / Telegram в /settings.</p>
+      </div>
+      <div class="card" onclick="this.classList.toggle('done')">
+        <span class="step-num">ШАГ 4</span>
+        <h3>Вступление в фаму</h3>
+        <p>Попросись на ЦР или вокзале в прокачанную семью — она даст X2 зарплату и автопарк.</p>
+      </div>
+      <div class="card" onclick="this.classList.toggle('done')">
+        <span class="step-num">ШАГ 5</span>
+        <h3>Промокод на 5 уровне</h3>
+        <p>На 5-м уровне открой /mm → Промокод и введи код ютубера за бонусные вирты и AZ.</p>
+      </div>
+      <div class="card" onclick="this.classList.toggle('done')">
+        <span class="step-num">ШАГ 6</span>
+        <h3>Аренда топ-снаряжения</h3>
+        <p>Накопив первые миллионы, арендуй Супер-кирку, грабли или фуру для утроения дохода.</p>
+      </div>
+    </div>
+
+    <h2>💼 Все лучшие работы на Bumble Bee</h2>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <div class="job-top"><span class="lvl-badge lvl-low">С 1 УРОВНЯ</span><span class="pay-tag">~$1.5–2.5 млн/ч</span></div>
+        <h4>🏭 Завод / Грузчик / Ферма</h4>
+        <p>Самые первые подработки для выполнения стартовых квестов и получения начального капитала.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-top"><span class="lvl-badge lvl-low">С 1 УРОВНЯ</span><span class="pay-tag">~$3.5–10 млн/ч</span></div>
+        <h4>🌾 Ферма льна и хлопка</h4>
+        <p>Не нужна машина. С арендой Супер-грабель приносит огромные деньги даже на низком уровне.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-top"><span class="lvl-badge lvl-low">С 1 УРОВНЯ</span><span class="pay-tag">~$4.5–12 млн/ч</span></div>
+        <h4>⛏ Шахта (добыча руды)</h4>
+        <p>Добыча камня, металла, бронзы и золота. С арендой Супер-кирки доход возрастает в 2.5 раза.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-top"><span class="lvl-badge lvl-mid">С 3 УРОВНЯ</span><span class="pay-tag">~$4–6 млн/ч</span></div>
+        <h4>🚧 Ремонтник дорог</h4>
+        <p>Спокойная работа по ремонту дорожного покрытия, отличная альтернатива переполненной шахте.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-top"><span class="lvl-badge lvl-mid">С 4 УРОВНЯ</span><span class="pay-tag">~$3–5 млн/ч</span></div>
+        <h4>🚌 Водитель автобуса / Такси</h4>
+        <p>Популярно на сервере Vice City или на кастомных автобусах с бонусами от семьи.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-top"><span class="lvl-badge lvl-mid">С 5–12 УРОВНЯ</span><span class="pay-tag">~$10–18 млн/ч</span></div>
+        <h4>🚛 Дальнобойщик</h4>
+        <p>Одна из самых прибыльных работ на сервере, особенно при аренде кастомной фуры с тюнингом.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-top"><span class="lvl-badge lvl-mid">С 10 УРОВНЯ</span><span class="pay-tag">~$4.5–7 млн/ч</span></div>
+        <h4>🗑 Мусоровоз</h4>
+        <p>Сбор мусора по штату с приятными бонусами и ларцами за выполненные маршруты.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-top"><span class="lvl-badge lvl-top">С 15+ УРОВНЯ</span><span class="pay-tag">~$12–20 млн/ч</span></div>
+        <h4>🛢 Перевозка нефти (вышки)</h4>
+        <p>Покупка бочек с нефтью на лодке или DFT-30 и перепродажа за вирты и AZ-коины.</p>
+      </div>
+      <div class="job-card">
+        <div class="job-top"><span class="lvl-badge lvl-top">С 19+ УРОВНЯ</span><span class="pay-tag">~$14–22 млн/ч</span></div>
+        <h4>✈️ Пилот гражданской авиации</h4>
+        <p>Высокооплачиваемые рейсы между аэропортами штата на личных или арендованных самолётах.</p>
+      </div>
+    </div>
+
+    <h2>💰 Калькулятор заработка</h2>
+    <div class="calc">
+      <div>
+        <label>Выбери работу:</label>
+        <select id="job" onchange="calc()">
+          <option value="2000000">Завод / Начальная ферма (1 ур.)</option>
+          <option value="3500000">Ферма льна и хлопка (без грабель)</option>
+          <option value="4500000">Шахта (обычная кирка)</option>
+          <option value="5000000">Ремонтник дорог / Мусоровоз</option>
+          <option value="10000000">Шахта / Ферма (Супер-кирка / грабли)</option>
+          <option value="13000000">Дальнобойщик (кастомная фура)</option>
+          <option value="15000000">Перевозка нефти (DFT-30 / лодка)</option>
+          <option value="17000000">Пилот гражданской авиации</option>
+        </select>
+        <label>Часов в день: <b id="h-val">2</b></label>
+        <input type="range" id="hrs" min="1" max="8" value="2" oninput="calc()">
+        <label><input type="checkbox" id="fam" checked onchange="calc()"> Бонус семьи (+30%)</label>
+      </div>
+      <div class="res-box">
+        <div style="color:#cbd5e1; font-size:13px;">Примерный доход за день:</div>
+        <div class="money" id="out">$ 5,200,000</div>
+      </div>
+    </div>
+
+    <h2>⌨️ Полезные команды (нажми, чтобы скопировать)</h2>
+    <div class="cmds">
+      <div class="cmd" onclick="copyTxt('/gps')"><b>/gps</b><span>Навигатор по местам и работам</span></div>
+      <div class="cmd" onclick="copyTxt('/mm')"><b>/mm</b><span>Главное меню, квесты и промокоды</span></div>
+      <div class="cmd" onclick="copyTxt('/settings')"><b>/settings</b><span>Настройки и защита аккаунта</span></div>
+      <div class="cmd" onclick="copyTxt('/cars')"><b>/cars</b><span>Управление транспортом</span></div>
+    </div>
+
+    <footer>Bumble Bee #27 Guide • Arizona Role Play</footer>
+  </div>
+  <div class="msg" id="msg">Скопировано!</div>
+  <button class="up-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆ Наверх</button>
+
+  <div class="nav-widget">
+    <div class="nav-menu" id="navMenu">
+      <button type="button" class="nav-item active" data-idx="0">🚀 Начало / IP</button>
+      <button type="button" class="nav-item" data-idx="1">✅ Пошаговый старт</button>
+      <button type="button" class="nav-item" data-idx="2">💼 Все работы</button>
+      <button type="button" class="nav-item" data-idx="3">💰 Калькулятор</button>
+      <button type="button" class="nav-item" data-idx="4">⌨️ Команды</button>
+    </div>
+    <div class="bottom-btns">
+      <a class="contact-btn" href="mailto:timofei.yarlykov@://gmail.com">✉️ Связаться с владельцем</a>
+      <button type="button" class="nav-toggle" id="navToggleBtn">🧭 Навигация</button>
+    </div>
+  </div>
+
+  <script>
+    function calc() {
+      const rate = Number(document.getElementById('job').value);
+      const hrs = Number(document.getElementById('hrs').value);
+      const fam = document.getElementById('fam').checked;
+      document.getElementById('h-val').textContent = hrs;
+      let sum = rate * hrs;
+      if (fam) sum = Math.round(sum * 1.3);
+      document.getElementById('out').textContent = "$ " + sum.toLocaleString('en-US');
+    }
+
+    function copyTxt(txt) {
+      navigator.clipboard.writeText(txt);
+      const m = document.getElementById('msg');
+      m.textContent = "Скопировано: " + txt;
+      m.style.display = "block";
+      setTimeout(() => m.style.display = "none", 1800);
+    }
+
+    const enDict = {
+      "⚡ Неофициальный гайд по старту • Arizona Bumble Bee": "⚡ Unofficial Starter Guide • Arizona Bumble Bee",
+      "ARIZONA ROLE PLAY • СЕРВЕР №27": "ARIZONA ROLE PLAY • SERVER #27",
+      "Полный гид по <span>Bumble Bee</span>": "Complete Guide to <span>Bumble Bee</span>",
+      "Отмечай шаги старта, выбирай лучшую работу под свой уровень, считай заработок за день и копируй команды в один клик.": "Check off starter steps, pick the best job for your level, calculate daily earnings, and copy commands in one click.",
+      "Копировать IP": "Copy IP",
+      "🚀 Официальный сайт Arizona RP": "🚀 Official Arizona RP Website",
+      "✅ Пошаговый старт (нажми на карточку, чтобы отметить)": "✅ Step-by-Step Start (click a card to check)",
+      "ШАГ 1": "STEP 1", "Официальный лаунчер": "Official Launcher",
+      "Скачай лаунчер Arizona Games (ПК или телефон) — каждый час игры дают бесплатные рулетки и талоны.": "Download Arizona Games launcher (PC or mobile) for free hourly roulettes and civic tokens.",
+      "ШАГ 2": "STEP 2", "Начальные квесты": "Starter Quests",
+      "Выполни квесты стартовых NPC — дадут первые деньги, опыт, временную машину и бесплатный VIP.": "Complete starter NPC quests for early cash, XP, a temporary car, and free VIP.",
+      "ШАГ 3": "STEP 3", "Паспорт и защита": "Passport & Security",
+      "Получи паспорт в Мэрии, права в автошколе и привяжи почту / Telegram в /settings.": "Get a passport at City Hall, a driver's license, and link Email / Telegram in /settings.",
+      "ШАГ 4": "STEP 4", "Вступление в фаму": "Join a Family",
+      "Попросись на ЦР или вокзале в прокачанную семью — она даст X2 зарплату и автопарк.": "Join an upgraded family at Central Market or spawn for X2 job pay and fleet cars.",
+      "ШАГ 5": "STEP 5", "Промокод на 5 уровне": "Level 5 Promo Code",
+      "На 5-м уровне открой /mm → Промокод и введи код ютубера за бонусные вирты и AZ.": "At Level 5, open /mm → Promo Code and enter a creator's code for bonus cash and AZ.",
+      "ШАГ 6": "STEP 6", "Аренда топ-снаряжения": "Rent Top Gear",
+      "Накопив первые миллионы, арендуй Супер-кирку, грабли или фуру для утроения дохода.": "Save your first millions and rent a Super Pickaxe, Rake, or truck to triple earnings.",
+      "💼 Все лучшие работы на Bumble Bee": "💼 Best Jobs on Bumble Bee",
+      "С 1 УРОВНЯ": "LEVEL 1+", "С 3 УРОВНЯ": "LEVEL 3+", "С 4 УРОВНЯ": "LEVEL 4+",
+      "С 5–12 УРОВНЯ": "LEVEL 5–12+", "С 10 УРОВНЯ": "LEVEL 10+", "С 15+ УРОВНЯ": "LEVEL 15+", "С 19+ УРОВНЯ": "LEVEL 19+",
+      "млн/ч": "M/hr",
+      "🏭 Завод / Грузчик / Ферма": "🏭 Factory / Loader / Starter Farm",
+      "Самые первые подработки для выполнения стартовых квестов и получения начального капитала.": "The very first starter jobs to complete initial quests and earn starting capital.",
+      "🌾 Ферма льна и хлопка": "🌾 Flax & Cotton Farm",
+      "Не нужна машина. С арендой Супер-грабель приносит огромные деньги даже на низком уровне.": "No car needed. Renting a Super Rake brings massive income even at a low level.",
+      "⛏ Шахта (добыча руды)": "⛏ Mining Quarry",
+      "Добыча камня, металла, бронзы и золота. С арендой Супер-кирки доход возрастает в 2.5 раза.": "Mine stone, metal, bronze, and gold. Renting a Super Pickaxe boosts income by 2.5x.",
+      "🚧 Ремонтник дорог": "🚧 Road Worker",
+      "Спокойная работа по ремонту дорожного покрытия, отличная альтернатива переполненной шахте.": "A calm road-repair job and a great alternative when the quarry is overcrowded.",
+      "🚌 Водитель автобуса / Такси": "🚌 Bus / Taxi Driver",
+      "Популярно на сервере Vice City или на кастомных автобусах с бонусами от семьи.": "Popular on Vice City or with custom buses and family bonuses.",
+      "🚛 Дальнобойщик": "🚛 Trucker",
+      "Одна из самых прибыльных работ на сервере, особенно при аренде кастомной фуры с тюнингом.": "One of the most profitable jobs on the server, especially with a rented custom truck.",
+      "🗑 Мусоровоз": "🗑 Garbage Truck Driver",
+      "Сбор мусора по штату с приятными бонусами и ларцами за выполненные маршруты.": "Collect trash across the state for solid payouts and reward crates.",
+      "🛢 Перевозка нефти (вышки)": "🛢 Oil Rig Hauling",
+      "Покупка бочек с нефтью на лодке или DFT-30 и перепродажа за вирты и AZ-коины.": "Buy oil barrels by boat or DFT-30 truck and resell them for cash and AZ Coins.",
+      "✈️ Пилот гражданской авиации": "✈️ Commercial Pilot",
+      "Высокооплачиваемые рейсы между аэропортами штата на личных или арендованных самолётах.": "High-paying flights between state airports on personal or rented planes.",
+      "💰 Калькулятор заработка": "💰 Income Calculator",
+      "Выбери работу:": "Choose a job:",
+      "Завод / Начальная ферма (1 ур.)": "Factory / Starter Farm (Lvl 1)",
+      "Ферма льна и хлопка (без грабель)": "Flax & Cotton Farm (no rake)",
+      "Шахта (обычная кирка)": "Mining Quarry (basic pickaxe)",
+      "Ремонтник дорог / Мусоровоз": "Road Worker / Garbage Truck",
+      "Шахта / Ферма (Супер-кирка / грабли)": "Quarry / Farm (Super Pickaxe / Rake)",
+      "Дальнобойщик (кастомная фура)": "Trucker (custom truck)",
+      "Перевозка нефти (DFT-30 / лодка)": "Oil Hauling (DFT-30 / boat)",
+      "Пилот гражданской авиации": "Commercial Pilot",
+      "Часов в день:": "Hours per day:",
+      "Бонус семьи (+30%)": "Family bonus (+30%)",
+      "Примерный доход за день:": "Estimated daily earnings:",
+      "⌨️ Полезные команды (нажми, чтобы скопировать)": "⌨️ Useful Commands (click to copy)",
+      "Навигатор по местам и работам": "GPS navigator to jobs & places",
+      "Главное меню, квесты и промокоды": "Main menu, quests & promo codes",
+      "Настройки и защита аккаунта": "Account security & settings",
+      "Управление транспортом": "Manage your vehicles",
+      "⬆ Наверх": "⬆ Top",
+      "✉️ Связаться с владельцем": "✉️ Contact Owner",
+      "🧭 Навигация": "🧭 Navigation",
+      "🚀 Начало / IP": "🚀 Start / IP",
+      "✅ Пошаговый старт": "✅ Step-by-Step Start",
+      "💼 Все работы": "💼 All Jobs",
+      "💰 Калькулятор": "💰 Calculator",
+      "⌨️ Команды": "⌨️ Commands"
+    };
+
+    function switchLang(lang) {
+      if (lang === 'ru') { location.reload(); return; }
+      document.getElementById('lang-en').style.background = '#facc15';
+      document.getElementById('lang-en').style.color = '#060913';
+      document.getElementById('lang-ru').style.background = 'transparent';
+      document.getElementById('lang-ru').style.color = '#cbd5e1';
+
+      document.querySelectorAll('.wrap, .up-btn, .nav-widget').forEach(block => {
+        let html = block.innerHTML;
+        for (const [ru, en] of Object.entries(enDict)) {
+          html = html.split(ru).join(en);
+        }
+        block.innerHTML = html;
+      });
+    }
+
+    let glowTimer = null;
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('#navToggleBtn')) {
+        document.getElementById('navMenu').classList.toggle('open');
+      }
+      const item = e.target.closest('.nav-item');
+      if (item) {
+        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+        item.classList.add('active');
+        document.querySelectorAll('.sec-glow').forEach(el => el.classList.remove('sec-glow'));
+
+        const idx = Number(item.dataset.idx);
+        const target = idx === 0 ? document.querySelector('.hero') : document.querySelectorAll('h2')[idx - 1]?.nextElementSibling;
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          target.classList.add('sec-glow');
+          clearTimeout(glowTimer);
+          glowTimer = setTimeout(() => target.classList.remove('sec-glow'), 2200);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
