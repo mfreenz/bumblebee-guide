@@ -76,7 +76,10 @@
       font-family: monospace; font-size: 16px; color: #38bdf8; box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
     }
     .ip-box button { background: linear-gradient(135deg, #38bdf8, #0284c7); color: #fff; border: none; padding: 7px 15px; border-radius: 9px; font-weight: bold; cursor: pointer; }
-    h2 { font-size: 22px; margin: 34px 0 16px; background: linear-gradient(90deg, #fde047, #fb923c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    
+    /* Заголовки с цветными смайликами */
+    h2 { font-size: 22px; margin: 34px 0 16px; color: #fff; }
+    h2 span { background: linear-gradient(90deg, #fde047, #fb923c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
     .grid, .jobs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 14px; }
     .card { background: rgba(17, 24, 39, 0.88); border: 1px solid rgba(250, 204, 21, 0.28); border-radius: 16px; padding: 18px; cursor: pointer; transition: 0.2s; }
@@ -173,7 +176,7 @@
       </div>
     </div>
 
-    <h2>✅ Пошаговый старт (нажми на карточку, чтобы отметить)</h2>
+    <h2>✅ <span>Пошаговый старт (нажми на карточку, чтобы отметить)</span></h2>
     <div class="grid">
       <div class="card" onclick="this.classList.toggle('done')">
         <span class="step-num">ШАГ 1</span>
@@ -207,7 +210,7 @@
       </div>
     </div>
 
-    <h2>💼 Все лучшие работы на Bumble Bee</h2>
+    <h2>💼 <span>Все лучшие работы на Bumble Bee</span></h2>
     <div class="jobs-grid">
       <div class="job-card">
         <div class="job-top"><span class="lvl-badge lvl-low">С 1 УРОВНЯ</span><span class="pay-tag">~$1.5–2.5 млн/ч</span></div>
@@ -256,7 +259,7 @@
       </div>
     </div>
 
-    <h2>💰 Калькулятор заработка</h2>
+    <h2>💰 <span>Калькулятор заработка</span></h2>
     <div class="calc">
       <div>
         <label>Выбери работу:</label>
@@ -280,7 +283,7 @@
       </div>
     </div>
 
-    <h2>⌨️ Полезные команды (нажми, чтобы скопировать)</h2>
+    <h2>⌨️ <span>Полезные команды (нажми, чтобы скопировать)</span></h2>
     <div class="cmds">
       <div class="cmd" onclick="copyTxt('/gps')"><b>/gps</b><span>Навигатор по местам и работам</span></div>
       <div class="cmd" onclick="copyTxt('/mm')"><b>/mm</b><span>Главное меню, квесты и промокоды</span></div>
@@ -290,7 +293,7 @@
 
     <footer>Bumble Bee #27 Guide • Arizona Role Play</footer>
   </div>
-  <div class="msg" id="msg">Скопировано!</div>
+ <div class="msg" id="msg">Скопировано!</div>
   <button class="up-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆ Наверх</button>
 
   <div class="nav-widget">
@@ -333,7 +336,7 @@
       "Отмечай шаги старта, выбирай лучшую работу под свой уровень, считай заработок за день и копируй команды в один клик.": "Check off starter steps, pick the best job for your level, calculate daily earnings, and copy commands in one click.",
       "Копировать IP": "Copy IP",
       "🚀 Официальный сайт Arizona RP": "🚀 Official Arizona RP Website",
-      "✅ Пошаговый старт (нажми на карточку, чтобы отметить)": "✅ Step-by-Step Start (click a card to check)",
+      "Пошаговый старт (нажми на карточку, чтобы отметить)": "Step-by-Step Start (click a card to check)",
       "ШАГ 1": "STEP 1", "Официальный лаунчер": "Official Launcher",
       "Скачай лаунчер Arizona Games (ПК или телефон) — каждый час игры дают бесплатные рулетки и талоны.": "Download Arizona Games launcher (PC or mobile) for free hourly roulettes and civic tokens.",
       "ШАГ 2": "STEP 2", "Начальные квесты": "Starter Quests",
@@ -346,7 +349,7 @@
       "На 5-м уровне открой /mm → Промокод и введи код ютубера за бонусные вирты и AZ.": "At Level 5, open /mm → Promo Code and enter a creator's code for bonus cash and AZ.",
       "ШАГ 6": "STEP 6", "Аренда топ-снаряжения": "Rent Top Gear",
       "Накопив первые миллионы, арендуй Супер-кирку, грабли или фуру для утроения дохода.": "Save your first millions and rent a Super Pickaxe, Rake, or truck to triple earnings.",
-      "💼 Все лучшие работы на Bumble Bee": "💼 Best Jobs on Bumble Bee",
+      "Все лучшие работы на Bumble Bee": "Best Jobs on Bumble Bee",
       "С 1 УРОВНЯ": "LEVEL 1+", "С 3 УРОВНЯ": "LEVEL 3+", "С 4 УРОВНЯ": "LEVEL 4+",
       "С 5–12 УРОВНЯ": "LEVEL 5–12+", "С 10 УРОВНЯ": "LEVEL 10+", "С 15+ УРОВНЯ": "LEVEL 15+", "С 19+ УРОВНЯ": "LEVEL 19+",
       "млн/ч": "M/hr",
@@ -368,7 +371,7 @@
       "Покупка бочек с нефтью на лодке или DFT-30 и перепродажа за вирты и AZ-коины.": "Buy oil barrels by boat or DFT-30 truck and resell them for cash and AZ Coins.",
       "✈️ Пилот гражданской авиации": "✈️ Commercial Pilot",
       "Высокооплачиваемые рейсы между аэропортами штата на личных или арендованных самолётах.": "High-paying flights between state airports on personal or rented planes.",
-      "💰 Калькулятор заработка": "💰 Income Calculator",
+      "Калькулятор заработка": "Income Calculator",
       "Выбери работу:": "Choose a job:",
       "Завод / Начальная ферма (1 ур.)": "Factory / Starter Farm (Lvl 1)",
       "Ферма льна и хлопка (без грабель)": "Flax & Cotton Farm (no rake)",
@@ -381,7 +384,7 @@
       "Часов в день:": "Hours per day:",
       "Бонус семьи (+30%)": "Family bonus (+30%)",
       "Примерный доход за день:": "Estimated daily earnings:",
-      "⌨️ Полезные команды (нажми, чтобы скопировать)": "⌨️ Useful Commands (click to copy)",
+      "Полезные команды (нажми, чтобы скопировать)": "Useful Commands (click to copy)",
       "Навигатор по местам и работам": "GPS navigator to jobs & places",
       "Главное меню, квесты и промокоды": "Main menu, quests & promo codes",
       "Настройки и защита аккаунта": "Account security & settings",
