@@ -321,13 +321,15 @@
       document.getElementById('out').textContent = "$ " + sum.toLocaleString('en-US');
     }
 
-    function copyTxt(txt) {
-      navigator.clipboard.writeText(txt);
-      const m = document.getElementById('msg');
-      m.textContent = "Скопировано: " + txt;
-      m.style.display = "block";
-      setTimeout(() => m.style.display = "none", 1800);
-    }
+  let curLang = 'ru';
+function copyTxt(txt) {
+  navigator.clipboard.writeText(txt);
+  const m = document.getElementById('msg');
+  m.textContent = (curLang === 'en' ? "Copied: " : "Скопировано: ") + txt;
+  m.style.display = "block";
+  setTimeout(() => m.style.display = "none", 1800);
+}
+
 
     const enDict = {
       "⚡ Неофициальный гайд по старту • Arizona Bumble Bee": "⚡ Unofficial Starter Guide • Arizona Bumble Bee",
@@ -400,6 +402,7 @@
     };
 
     function switchLang(lang) {
+  curLang = lang;
       if (lang === 'ru') { location.reload(); return; }
       document.getElementById('lang-en').style.background = '#facc15';
       document.getElementById('lang-en').style.color = '#060913';
